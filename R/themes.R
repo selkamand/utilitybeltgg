@@ -129,6 +129,11 @@ theme_no_legend_title <- function(){
   ggplot2::theme(legend.title = ggplot2::element_blank())
 }
 
+#' Custom Themes
+#'
+#' @return ggtheme
+#' @export
+#'
 theme_fivethirtyeight_two <- function(){
   ggthemes::theme_fivethirtyeight() +
     theme_common_adjustments(no_background = TRUE)
