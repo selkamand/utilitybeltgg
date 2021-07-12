@@ -1,5 +1,5 @@
 # utilitybeltgg
-![r-universe](https://r-lib.r-universe.dev/badges/utilitybeltgg)
+![r-universe](https://selkamand.r-universe.dev/badges/utilitybeltgg)
 
 utility functions for working with ggplots
 
