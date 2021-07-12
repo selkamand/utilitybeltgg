@@ -7,5 +7,5 @@ utility functions for working with ggplots
 
 # Installation
 ```
-remotes::install_github("selkamand/utilitybeltgg")
+install.packages("utilitybeltgg", repos = "https://ropensci.r-universe.dev")
 ```
