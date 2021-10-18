@@ -61,41 +61,7 @@ geom_crossbar_predefined <- function(summaryfunction=stats::median, width=0.4, s
                         geom = "crossbar", width = width, size=size)
 }
 
-#' geom barplot counts
-#'
-#' Add text labels indicating counts above barplot columns.
-#' Works on plots that have a geom_bar() layer.
-#' Works even if you flip axis with coord_flip().
-#'
-#' @param distance_from_bar distance between text and cbar
-#' @param size size of text (number)
-#' @param alpha transparancy (number)
-#' @param color colour (string)
-#' @param family font family (string)
-#' @param fontface Font face ("plain", "italic", "bold", "bold.italic") (string)
-#'
-#' @return ggplot geom
-#' @export
-#'
-#' @examples
-#' mtcars %>%
-#' ggplot2::ggplot(ggplot2::aes(x=as.character(cyl))) +
-#' ggplot2::geom_bar() +
-#' ggplot2::xlab("cylinders") +
-#' geom_barplot_counts()
-geom_barplot_counts <- function(distance_from_bar=1.5, size = 4, fontface="bold", alpha = 0.8, color = "black", family="Helvetica"){
-  ..count..=NULL
 
-  ggplot2::geom_text(
-    stat='count', ggplot2::aes(label=..count..),
-    nudge_y = distance_from_bar,
-    size = size,
-    fontface=fontface,
-    alpha = alpha,
-    color=color,
-    family=family
-  )
-}
 
 #' Custom Themes
 #'
