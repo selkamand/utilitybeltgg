@@ -83,17 +83,59 @@ theme_axis_titles_cleveland <- function(){
 #' @return ggtheme
 #' @export
 #'
-theme_no_legend <- function(){
+theme_legend_none <- function(){
   ggplot2::theme(legend.position = "none")
+}
+
+#' Custom Themes
+#'
+#' @param direction "Vertical or Horizontal"
+#'
+#' @return ggtheme
+#' @export
+theme_legend_right <- function(direction = "vertical"){
+  ggplot2::theme(legend.position = "right", legend.direction = direction)
+}
+
+#' Custom Themes
+#'
+#' @param direction "Vertical or Horizontal"
+#'
+#' @return ggtheme
+#' @export
+theme_legend_left <- function(direction = "vertical"){
+  ggplot2::theme(legend.position = "left", legend.direction = direction)
+}
+
+#' Custom Themes
+#'
+#' @param direction "Vertical or Horizontal"
+#'
+#' @return ggtheme
+#' @export
+theme_legend_top <- function(direction = "horizontal"){
+  ggplot2::theme(legend.position = "top", legend.direction = direction)
+}
+
+
+#' Custom Themes
+#'
+#' @param direction "Vertical or Horizontal"
+#'
+#' @return ggtheme
+#' @export
+theme_legend_bottom <- function(direction = "horizontal"){
+  ggplot2::theme(legend.position = "bottom", legend.direction = direction)
 }
 
 #' Custom Themes
 #'
 #' @return ggtheme
 #' @export
-theme_no_legend_title <- function(){
+theme_legend_title_none <- function(){
   ggplot2::theme(legend.title = ggplot2::element_blank())
 }
+
 
 #' Custom Themes
 #'
@@ -103,4 +145,32 @@ theme_no_legend_title <- function(){
 theme_fivethirtyeight_two <- function(){
   ggthemes::theme_fivethirtyeight() +
     theme_common_adjustments(no_background = TRUE)
+}
+
+
+
+
+# Superseded functions ----------------------------------------------------
+#' Title
+#'
+#' @param ...
+#'
+#' @return theme
+#' @export
+#'
+theme_no_legend <- function(...){
+  .Deprecated("theme_legend_none")
+  theme_legend_none()
+}
+
+#' Title
+#'
+#' @param ...
+#'
+#' @return theme
+#' @export
+#'
+theme_no_legend_title <- function(...){
+  .Deprecated("theme_legend_title_remove")
+  theme_legend_none()
 }

@@ -2,13 +2,16 @@
 % Please edit documentation in R/themes.R
 \name{theme_no_legend_title}
 \alias{theme_no_legend_title}
-\title{Custom Themes}
+\title{Title}
 \usage{
-theme_no_legend_title()
+theme_no_legend_title(...)
+}
+\arguments{
+\item{...}{}
 }
 \value{
-ggtheme
+theme
 }
 \description{
-Custom Themes
+Title
 }

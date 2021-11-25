@@ -10,6 +10,7 @@
 #' @param color colour (string)
 #' @param family font family (string)
 #' @param fontface Font face ("plain", "italic", "bold", "bold.italic") (string)
+#' @param orientation orientation of barplot ("h" / "horizontal" / "v" / "vertical")
 #'
 #' @return ggplot geom
 #' @export
@@ -45,3 +46,44 @@ geom_barplot_counts <- function(distance_from_bar=1.5, orientation = "h",size = 
     family=family
   )
 }
+
+
+# Entire Plots ------------------------------------------------------------
+
+#' Plot
+#'
+#' @param data a dataset to plot (dataframe)
+#' @param col column of dataframe to plot (don't quote)
+#' @param orientation orientation of barplot ("h" / "horizontal" / "v" / "vertical")
+#' @param fill column of dataframe to color based on (don't quote)
+#' @param position see ?ggplot2::geom_bar for details (Usually one of: "stack", "dodge", "fill")
+#' @param ...  set any other barplot property. See ?ggplot2::geom_bar for details. (e.g. alpha = 0.4)
+#' @param title title of graph (string)
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' ggbarplot(iris, Species, fill = Species, orientation = "horizontal", title = "My Freq Graph")
+ggbarplot <- function(data, col, orientation = "h", fill=NULL, title = NULL, position = "stack", ...){
+  col <- rlang::enquo(col)
+  col_string <- rlang::as_name(col)
+
+  fill_column <- rlang::enquo(fill)
+
+  if(orientation %in% c("h", "horizontal")) { aesthetic <- ggplot2::aes(y = forcats::fct_rev(forcats::fct_infreq(!!col)))}
+  else if (orientation %in% c("v", "vertical")) {aesthetic <- ggplot2::aes(x = forcats::fct_infreq(!!col))}
+  else
+    stop("orientation must be one of 'h', 'horizontal', 'v' or 'vertical'")
+
+  assertthat::assert_that(col_string %in% names(data), msg = paste0("[", col_string ,"] is not a name of the supplied dataframe\n\n[col] must be one of the following:\n", paste0(collapse = ", ", names(data))))
+  ggplot2::ggplot(data, aesthetic) +
+    ggplot2::ylab(col_string) +
+    ggplot2::geom_bar(ggplot2::aes(fill=!!fill_column), position=position, ...) +
+    ggplot2::xlab("Count") +
+    ggplot2::ggtitle(title) +
+    theme_fivethirtyeight_two()
+}
+
+#c("#FAAB18", "#1380A1","#990000", "#588300")
+
