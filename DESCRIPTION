@@ -20,4 +20,5 @@ Imports:
     ggpubr,
     ggthemes,
     magrittr,
-    rlang
+    rlang,
+    scales
