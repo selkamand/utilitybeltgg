@@ -151,9 +151,13 @@ theme_fivethirtyeight_two <- function(){
 
 
 # Superseded functions ----------------------------------------------------
-#' Title
+
+#' Remove theme legend
 #'
-#' @param ...
+#' `r lifecycle::badge("deprecated")`
+#'
+#'
+#' @param ... no arguments are used. Included only so code written for older versions of package doesn't break
 #'
 #' @return theme
 #' @export
@@ -163,9 +167,11 @@ theme_no_legend <- function(...){
   theme_legend_none()
 }
 
-#' Title
+#' Remove theme legend
 #'
-#' @param ...
+#' `r lifecycle::badge("deprecated")`
+#'
+#' @param ... no arguments are used. Included only so code written for older versions of package doesn't break
 #'
 #' @return theme
 #' @export

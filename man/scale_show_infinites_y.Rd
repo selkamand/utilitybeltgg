@@ -4,20 +4,78 @@
 \alias{scale_show_infinites_y}
 \title{Include Infinite Values in Plot}
 \usage{
-scale_show_infinites_y()
+scale_show_infinites_y(
+  trans = "identity",
+  limits = NULL,
+  position = "bottom",
+  breaks = ggplot2::waiver(),
+  ...
+)
+}
+\arguments{
+\item{...}{
+  Arguments passed on to \code{\link[=scale_show_infinites_x]{scale_show_infinites_x}}
+  \describe{
+    \item{\code{trans}}{For continuous scales, the name of a transformation object
+or the object itself. Built-in transformations include "asn", "atanh",
+"boxcox", "date", "exp", "hms", "identity", "log", "log10", "log1p", "log2",
+"logit", "modulus", "probability", "probit", "pseudo_log", "reciprocal",
+"reverse", "sqrt" and "time".
+
+A transformation object bundles together a transform, its inverse,
+and methods for generating breaks and labels. Transformation objects
+are defined in the scales package, and are called \verb{<name>_trans} (e.g.,
+\code{\link[scales:boxcox_trans]{scales::boxcox_trans()}}). You can create your own
+transformation with \code{\link[scales:trans_new]{scales::trans_new()}}.}
+    \item{\code{limits}}{One of:
+\itemize{
+\item \code{NULL} to use the default scale range
+\item A numeric vector of length two providing limits of the scale.
+Use \code{NA} to refer to the existing minimum or maximum
+\item A function that accepts the existing (automatic) limits and returns
+new limits. Also accepts rlang \link[rlang:as_function]{lambda} function
+notation.
+Note that setting limits on positional scales will \strong{remove} data outside of the limits.
+If the purpose is to zoom, use the limit argument in the coordinate system
+(see \code{\link[ggplot2:coord_cartesian]{coord_cartesian()}}).
+}}
+    \item{\code{position}}{For position scales, The position of the axis.
+\code{left} or \code{right} for y axes, \code{top} or \code{bottom} for x axes.}
+    \item{\code{breaks}}{One of:
+\itemize{
+\item \code{NULL} for no breaks
+\item \code{waiver()} for the default breaks computed by the
+\link[scales:trans_new]{transformation object}
+\item A numeric vector of positions
+\item A function that takes the limits as input and returns breaks
+as output (e.g., a function returned by \code{\link[scales:breaks_extended]{scales::extended_breaks()}}).
+Also accepts rlang \link[rlang:as_function]{lambda} function notation.
+}}
+  }}
 }
 \value{
 ScaleContinuousPosition object that can be added to a ggplot object using '+'
 }
 \description{
-Will replace infinite values by the nearest limit
+Will replace infinite values by the nearest limit.
 }
 \examples{
-mtcars \%>\%
-    dplyr::mutate(qsec2 = ifelse(qsec > 19, Inf, qsec)) \%>\%
-    ggplot2::ggplot(ggplot2::aes(x=qsec2, y=carb)) +
+\dontrun{
+data = mtcars \%>\%
+    dplyr::mutate(qsec2 = ifelse(qsec > 19, Inf, qsec))
+
+# Plot with infinites set to nearest limit
+data \%>\%
+    ggplot2::ggplot(ggplot2::aes(x=carb, y=qsec2)) +
     ggplot2::geom_point() +
     scale_show_infinites_y()
+
+# Plot on a log10 scale with infinites set to nearest limit
+data \%>\%
+    ggplot2::ggplot(ggplot2::aes(x=carb, y=qsec2)) +
+    ggplot2::geom_point() +
+    scale_show_infinites_y(trans="log10")
+}
 }
 \seealso{
 \code{\link[=scale_show_infinites_x]{scale_show_infinites_x()}}

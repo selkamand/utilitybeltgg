@@ -19,6 +19,7 @@ Imports:
     ggplot2,
     ggpubr,
     ggthemes,
+    lifecycle,
     magrittr,
     rlang,
     scales
