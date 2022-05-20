@@ -13,10 +13,7 @@ scale_show_infinites_y(
 )
 }
 \arguments{
-\item{...}{
-  Arguments passed on to \code{\link[=scale_show_infinites_x]{scale_show_infinites_x}}
-  \describe{
-    \item{\code{trans}}{For continuous scales, the name of a transformation object
+\item{trans}{For continuous scales, the name of a transformation object
 or the object itself. Built-in transformations include "asn", "atanh",
 "boxcox", "date", "exp", "hms", "identity", "log", "log10", "log1p", "log2",
 "logit", "modulus", "probability", "probit", "pseudo_log", "reciprocal",
@@ -27,7 +24,8 @@ and methods for generating breaks and labels. Transformation objects
 are defined in the scales package, and are called \verb{<name>_trans} (e.g.,
 \code{\link[scales:boxcox_trans]{scales::boxcox_trans()}}). You can create your own
 transformation with \code{\link[scales:trans_new]{scales::trans_new()}}.}
-    \item{\code{limits}}{One of:
+
+\item{limits}{One of:
 \itemize{
 \item \code{NULL} to use the default scale range
 \item A numeric vector of length two providing limits of the scale.
@@ -39,9 +37,11 @@ Note that setting limits on positional scales will \strong{remove} data outside 
 If the purpose is to zoom, use the limit argument in the coordinate system
 (see \code{\link[ggplot2:coord_cartesian]{coord_cartesian()}}).
 }}
-    \item{\code{position}}{For position scales, The position of the axis.
+
+\item{position}{For position scales, The position of the axis.
 \code{left} or \code{right} for y axes, \code{top} or \code{bottom} for x axes.}
-    \item{\code{breaks}}{One of:
+
+\item{breaks}{One of:
 \itemize{
 \item \code{NULL} for no breaks
 \item \code{waiver()} for the default breaks computed by the
@@ -51,6 +51,11 @@ If the purpose is to zoom, use the limit argument in the coordinate system
 as output (e.g., a function returned by \code{\link[scales:breaks_extended]{scales::extended_breaks()}}).
 Also accepts rlang \link[rlang:as_function]{lambda} function notation.
 }}
+
+\item{...}{
+  Arguments passed on to \code{\link[=scale_show_infinites_x]{scale_show_infinites_x}}
+  \describe{
+    \item{\code{}}{}
   }}
 }
 \value{

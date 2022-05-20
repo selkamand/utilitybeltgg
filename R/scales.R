@@ -42,8 +42,10 @@ scale_show_infinites_x <- function(trans="identity", limits = NULL, position = "
 
 #' Include Infinite Values in Plot
 #'
+#'
 #' @export
 #' @inherit scale_show_infinites_x description return
+#' @inheritParams scale_show_infinites_x
 #' @inheritDotParams scale_show_infinites_x
 #' @seealso [scale_show_infinites_x()]
 #'
