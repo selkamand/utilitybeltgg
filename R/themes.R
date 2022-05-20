@@ -147,7 +147,27 @@ theme_fivethirtyeight_two <- function(){
     theme_common_adjustments(no_background = TRUE)
 }
 
-
+#' Miminal theme with border
+#'
+#' A minimal theme with a border. Works well for faceted graphs
+#'
+#' @param border_color Colour of border
+#' @param border_thickness border thickness in mm
+#' @inheritDotParams ggplot2::theme_minimal
+#'
+#'
+#' @export
+#'
+#' @examples
+#' mtcars %>%
+#'   ggplot2::ggplot(ggplot2::aes(x = mpg, y=disp)) +
+#'   ggplot2::geom_point() +
+#'   theme_minimal_bordered()
+theme_minimal_bordered <- function(border_color = "grey40", border_thickness = NULL, ...){
+  ggplot2::theme_minimal(...) +
+  ggplot2::theme(panel.border=ggplot2::element_rect(fill=NA, colour=border_color, size = border_thickness))+
+  theme_common_adjustments()
+}
 
 
 # Superseded functions ----------------------------------------------------
@@ -180,3 +200,5 @@ theme_no_legend_title <- function(...){
   .Deprecated("theme_legend_title_remove")
   theme_legend_none()
 }
+
+
