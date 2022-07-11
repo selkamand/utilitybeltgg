@@ -12,7 +12,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Imports: 
     assertthat,
     forcats,
@@ -21,6 +21,11 @@ Imports:
     ggthemes,
     magrittr,
     rlang,
-    scales
+    scales,
+    utilitybeltfmt (>= 0.0.0.9000)
 Suggests: 
-    lifecycle
+    lifecycle,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Remotes:  
+    selkamand/utilitybeltfmt

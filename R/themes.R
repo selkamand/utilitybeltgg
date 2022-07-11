@@ -136,7 +136,6 @@ theme_legend_title_none <- function(){
   ggplot2::theme(legend.title = ggplot2::element_blank())
 }
 
-
 #' Custom Themes
 #'
 #' @return ggtheme
@@ -200,5 +199,4 @@ theme_no_legend_title <- function(...){
   .Deprecated("theme_legend_title_remove")
   theme_legend_none()
 }
-
 
