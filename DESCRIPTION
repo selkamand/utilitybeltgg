@@ -21,11 +21,9 @@ Imports:
     ggthemes,
     magrittr,
     rlang,
-    scales,
-    utilitybeltfmt (>= 0.0.0.9000)
+    scales
 Suggests: 
     lifecycle,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-Remotes:  
-    selkamand/utilitybeltfmt
+Remotes:
